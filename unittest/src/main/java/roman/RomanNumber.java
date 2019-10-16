@@ -112,7 +112,7 @@ public final class RomanNumber extends Number {
   
 
   private static String toRoman(int value) {
-  if((value > 3999) && (value value <= 0)){
+  if((value <= 3999) && ( value > 0)){
 
     int l =  SYMBOLS.floorKey(value);
 

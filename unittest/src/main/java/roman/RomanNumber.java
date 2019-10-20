@@ -149,8 +149,8 @@ public final class RomanNumber extends Number {
   }
   
 
-  private static String toRoman(int value) {
-  if((value <= 3999) && ( value > 0)){
+  private static String toRoman(Float value) {
+  if((value <= 3999) && ( value > 0) && (value = f.intValue(value))){
 
     int l =  SYMBOLS.floorKey(value);
 
@@ -163,5 +163,10 @@ public final class RomanNumber extends Number {
 
   else { throw new IllegalArgumentException();}
     
+  }
+
+
+  private static String toRoman(String value) {
+    throw new IllegalArgumentException();
   }
 }

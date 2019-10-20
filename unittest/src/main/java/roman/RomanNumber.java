@@ -93,6 +93,42 @@ public final class RomanNumber extends Number {
     
     int roman = 0;
     int val1, val2;
+	 
+	   private  boolean chifrep() {
+
+       int k = 1;
+       boolean a = false;
+       int j = 0;
+       while (j < (value.length()-1) && k < 4 && a=false) {
+
+        if (value.charAt(j)=value.charAt(j+1))
+         { k = k++;
+          if  (value.charAt(j)= "X" || value.charAt(j)= "L" || value.charAt(j)= "D") {a = true;}
+         }
+        else {k=1;}
+         j = j++;
+        }
+      if (k=4 || a=true){ return true; }
+      else {return false;}
+        
+      }
+      private  boolean quatredoub() { 
+       int k = 1;
+       int j = 0;
+       while (j < (value.length()-3) && k < 4 ){ 
+
+       if (value.charAt(j)=value.charAt(j+2) &&  value.charAt(j+1)=value.charAt(j+3) )
+        {k = k++;}
+       else {k=1;}
+        j = j + 2;
+      }
+      if (k=4){return true;}
+      else {return false;}
+    } 
+
+    if ( (chifrep()) || (quatredoub()) ) {throw new IllegalArgumentException();}
+    else {
+	  
     for (int i = 0; i < value.length(); i++) {
 	val1 = SYMBOLS.get(value.charAt(i));
 	 if (i < value.length()-1) {
@@ -106,8 +142,10 @@ public final class RomanNumber extends Number {
 	} else {
 		resultat += val1;
 		}			
+     }
     }
     return roman;
+    
   }
   
 

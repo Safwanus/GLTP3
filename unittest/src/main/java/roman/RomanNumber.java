@@ -2,6 +2,7 @@
 package roman;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public final class RomanNumber extends Number {
@@ -39,6 +40,8 @@ public final class RomanNumber extends Number {
   public RomanNumber(int value) {
     this.value = value;
   }
+
+
 
   /**
    * @{inheritDoc}
@@ -85,66 +88,24 @@ public final class RomanNumber extends Number {
     return new RomanNumber(roman);
   }
 
-  public static RomanNumber valueOf(int value) {
-    return new RomanNumber(value);
+  public static String valueOf(int value) {
+    return new RomanNumber(value).toString();
+  }
+
+  public static void valueOf(double v) {
+    throw new IllegalArgumentException();
   }
 
   private static int fromRoman(String romanValue) {
-    
-    int roman = 0;
-    int val1, val2;
-	 
-	   private  boolean chifrep() {
 
-       int k = 1;
-       boolean a = false;
-       int j = 0;
-       while (j < (value.length()-1) && k < 4 && a=false) {
-
-        if (value.charAt(j)=value.charAt(j+1))
-         { k = k++;
-          if  (value.charAt(j)= "X" || value.charAt(j)= "L" || value.charAt(j)= "D") {a = true;}
-         }
-        else {k=1;}
-         j = j++;
-        }
-      if (k=4 || a=true){ return true; }
-      else {return false;}
-        
-      }
-      private  boolean quatredoub() { 
-       int k = 1;
-       int j = 0;
-       while (j < (value.length()-3) && k < 4 ){ 
-
-       if (value.charAt(j)=value.charAt(j+2) &&  value.charAt(j+1)=value.charAt(j+3) )
-        {k = k++;}
-       else {k=1;}
-        j = j + 2;
-      }
-      if (k=4){return true;}
-      else {return false;}
-    } 
-
-    if ( (chifrep()) || (quatredoub()) ) {throw new IllegalArgumentException();}
-    else {
-	  
-    for (int i = 0; i < value.length(); i++) {
-	val1 = SYMBOLS.get(value.charAt(i));
-	 if (i < value.length()-1) {
-		val2 = SYMBOLS.get(value.charAt(i+1));
-		if (val1 >= val2) {
-			resultat += val1;
-		} else {
-			resultat += (val2 - val1);
-			i += 1;
-		}
-	} else {
-		resultat += val1;
-		}			
-     }
+    int sum = 0;
+    sum += SYMBOLS.get(romanValue.charAt(0));
+    for(int i = 1; i < romanValue.length(); i++){
+      sum += SYMBOLS.get(romanValue.charAt(i));
+      if(SYMBOLS.get(romanValue.charAt(i)) > SYMBOLS.get(romanValue.charAt(i - 1)))
+        sum -= SYMBOLS.get(romanValue.charAt(i - 1)) * 2;
     }
-    return roman;
+    return sum;
     
   }
   
@@ -173,10 +134,11 @@ public final class RomanNumber extends Number {
       }
       return sb.toString();
   }
-  
+
   private static String toRoman(float value){
     throw new IllegalArgumentException();
   }
+
   private static String toRoman(String value) {
     throw new IllegalArgumentException();
   }

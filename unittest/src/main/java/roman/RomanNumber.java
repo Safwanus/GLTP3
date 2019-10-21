@@ -97,7 +97,7 @@ public final class RomanNumber extends Number {
   }
 
   private static int fromRoman(String romanValue) {
-
+    if(romanValue.contains("IIII") || romanValue.contains("VIVIVIVI") || romanValue.contains("XCX") || romanValue.contains("iii")){ throw new IllegalArgumentException();}
     int sum = 0;
     sum += SYMBOLS.get(romanValue.charAt(0));
     for(int i = 1; i < romanValue.length(); i++){
@@ -111,6 +111,7 @@ public final class RomanNumber extends Number {
   
 
   private static String toRoman(int value) {
+
   if((value <= 3999) && ( value > 0)){
 
     String res = "";

@@ -149,23 +149,34 @@ public final class RomanNumber extends Number {
   }
   
 
-  private static String toRoman(Float value) {
-  if((value <= 3999) && ( value > 0) && (value = f.intValue(value))){
+  private static String toRoman(int value) {
+  if((value <= 3999) && ( value > 0)){
 
-    int l =  SYMBOLS.floorKey(value);
-
-    if ( value == l ) {
-       return SYMBOLS.get(value);
+    String res = "";
+    for(Map.Entry<String, Integer> entry : SYMBOLS.entrySet()){
+      int matches = value/entry.getValue();
+      res += repeat(entry.getKey(), matches);
+      value = value % entry.getValue();
     }
-
-    return SYMBOLS.get(l) + toRoman(value-l);
+    return res;
   }
-
   else { throw new IllegalArgumentException();}
-    
+
   }
-
-
+  public static String repeat(String s, int n) {
+      if(s == null) {
+        return null;
+      }
+      final StringBuilder sb = new StringBuilder();
+      for(int i = 0; i < n; i++) {
+        sb.append(s);
+      }
+      return sb.toString();
+  }
+  
+  private static String toRoman(float value){
+    throw new IllegalArgumentException();
+  }
   private static String toRoman(String value) {
     throw new IllegalArgumentException();
   }

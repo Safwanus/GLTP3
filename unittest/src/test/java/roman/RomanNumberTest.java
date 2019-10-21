@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.*;
+
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -83,14 +85,6 @@ public class RomanNumberTest {
     RomanNumber.valueOf(0);
   }
 
-  // Echouer valeurs négative
-  @Test(expected = IllegalArgumentException.class)
-  public void valueNegative(){
-	
-    RomanNumber.valueOf(-1));
-    
-  }
-  
   // Echouer valeurs non entieres
   @Test(expected = IllegalArgumentException.class)
   public void valueNonEntiere(){

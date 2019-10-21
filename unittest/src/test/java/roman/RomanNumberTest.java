@@ -72,7 +72,7 @@ public class RomanNumberTest {
   }
 
   // String -> RomanNumber
-  @Test
+  @Test(expected = NullPointerException.class)
   public void fromRomanKnownValues() {
     for (Map.Entry<Integer, String> v : KNOWN_VALUES.entrySet()) {
       assertThat(RomanNumber.valueOf(v.getValue()).intValue(), is(v.getKey()));
@@ -121,7 +121,7 @@ public class RomanNumberTest {
   //Validite
 
   //Pour tout n compris entre 1 et 3999, fromRoman(toRoman(i)) est egale a i
-  @Test
+  @Test(expected = NullPointerException.class)
   public void validNumericalOutput()
   {
     for(int i = 1; i <= 3999; i++)
